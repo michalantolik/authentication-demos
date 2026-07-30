@@ -1,2 +1,4 @@
 <Solution>
+  <Project Path="src/CookieAuth.Api/CookieAuth.Api.csproj" Id="6a807a08-9b2a-4820-baa7-0c3aedbba0f2" />
+  <Project Path="src/CookieAuth.Blazor/CookieAuth.Blazor.csproj" Id="a1d6c344-45fd-4e4b-952e-8d7837afbc8a" />
 </Solution>
