@@ -1,5 +1,16 @@
 ﻿@page "/private"
 
+@using Microsoft.AspNetCore.Authorization
+
+<!--
+    Restricts access to authenticated users only.
+
+    The authentication middleware identifies the user.
+    The authorization middleware checks this attribute
+    to determine whether the user can access the page.
+-->
+@attribute [Authorize]
+
 <PageTitle>Private</PageTitle>
 
 <h1>Private</h1>
@@ -7,13 +18,18 @@
 <h2>Login successful!</h2>
 
 <p>
-    You are now authenticated and can access protected resources.
+    You are authenticated and can access this protected page.
 </p>
 
 <h2>
     <a href="/">Start the application again →</a>
 </h2>
 
+<!--
+    Sends a POST request to the logout endpoint.
+    The endpoint calls SignOutAsync, which removes
+    the authentication cookie from the browser.
+-->
 <form method="post" action="/authentication/logout">
     <button type="submit">Logout</button>
 </form>
