@@ -1,0 +1,21 @@
+﻿@page "/login"
+
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Web
+
+<PageTitle>Login</PageTitle>
+
+<h1>Login</h1>
+
+<EditForm Model="_request" FormName="login" method="post" action="/authentication/login">
+
+    <p><label>Email <InputText name="Email" @bind-Value="_request.Email" /></label></p>
+    <p><label>Password <InputText name="Password" @bind-Value="_request.Password" type="password" /></label></p>
+
+    <button type="submit">Login</button>
+
+</EditForm>
+
+@code {
+    private readonly LoginRequest _request = new();
+}

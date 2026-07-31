@@ -1,3 +1,4 @@
+using CookieAuth.Blazor.Authentication;
 using CookieAuth.Blazor.Components;
 
 namespace CookieAuth.Blazor;
@@ -15,11 +16,16 @@ public class Program
 
         if (!app.Environment.IsDevelopment())
         {
+            // Handles unhandled exceptions.
             app.UseExceptionHandler("/Error");
+
             app.UseHsts();
         }
 
-        app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
+        // Handles HTTP status code responses.
+        app.UseStatusCodePagesWithReExecute(
+            "/StatusCode",
+            "?code={0}");
 
         app.UseHttpsRedirection();
 
@@ -29,6 +35,9 @@ public class Program
 
         app.MapRazorComponents<App>()
             .AddInteractiveServerRenderMode();
+
+        // Registers authentication endpoints.
+        app.MapAuthenticationEndpoints();
 
         app.Run();
     }
